@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework', 
     'rest_framework_simplejwt',
     'authapp',
+    'libraryapp',
+    'parseapp',
 ]
 
 REST_FRAMEWORK = {
@@ -82,7 +84,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'login_system.urls'
+ROOT_URLCONF = 'apisys.urls'
 
 TEMPLATES = [
     {
@@ -100,7 +102,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'login_system.wsgi.application'
+WSGI_APPLICATION = 'apisys.wsgi.application'
 
 
 # Database
