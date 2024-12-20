@@ -4,12 +4,12 @@ from .models import Author, Genre, Book
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = '__all__'
+        fields = ['id', 'name']
 
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
-        fields = '__all__'
+        fields = ['id', 'name']
 
 class BookSerializer(serializers.ModelSerializer):
     authors = AuthorSerializer(many=True)
@@ -17,4 +17,4 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = '__all__'
+        fields = ['id', 'title', 'authors', 'genre', 'published_year']
