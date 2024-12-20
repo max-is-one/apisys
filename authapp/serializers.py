@@ -36,9 +36,3 @@ class LoginSerializer(TokenObtainPairSerializer):
 #Serializer for password reset
 class PasswordResetSerializer(serializers.Serializer):
     email = serializers.EmailField()
-
-'''
-class ChangePasswordSerializer(serializers.Serializer):
-    old_password = serializers.CharField(required=True)
-    new_password = serializers.CharField(required=True)
-'''

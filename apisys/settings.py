@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'authapp',
     'libraryapp',
     'parseapp',
+    'django_filters',
 ]
 
 REST_FRAMEWORK = {
