@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsOwner
-from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, PasswordResetSerializer#, ChangePasswordSerializer
+from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, PasswordResetSerializer
 from django.core.mail import send_mail
 from rest_framework.response import Response
 
@@ -42,26 +42,3 @@ class PasswordResetView(generics.GenericAPIView):
                 fail_silently=False,
             )
         return Response({"message": "If the email is registered, you will receive a password reset link."}, status=status.HTTP_200_OK)
-
-'''
-class ChangePasswordView(generics.UpdateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (IsAuthenticated,)
-    serializer_class = ChangePasswordSerializer
-
-    def update(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        serializer = self.get_serializer(data=request.data)
-
-        if serializer.is_valid():
-            #Password verification
-            if not self.object.check_password(serializer.data.get("old_password")):
-                return Response({"old_password": ["Wrong password."]}, status=status.HTTP_400_BAD_REQUEST)
-
-            #Changing password
-            self.object.set_password(serializer.data.get("new_password"))
-            self.object.save()
-            return Response({"status": "success"}, status=status.HTTP_200_OK)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-'''
