@@ -3,3 +3,8 @@ __pycache__/
 .env
 *.log
 *.sqlite3
+apisys/__pycache__/
+authapp/__pycache__/
+libraryapp/__pycache__/
+parseapp/__pycache__/
+

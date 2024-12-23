@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/authapp/', include('authapp.urls')),
     path('api/libraryapp/', include('libraryapp.urls')),
+    path('api/parseapp/', include('parseapp.urls')),
 ]
