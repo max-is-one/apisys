@@ -1,5 +1,5 @@
 """
-URL configuration for login_system project.
+URL configuration for apisys project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -16,10 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import permissions
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+
+schema_view = get_schema_view( 
+    openapi.Info( 
+        title="Library API", 
+        default_version='v1',
+        description="API documentation for the Library project", 
+    ), public=True, 
+    permission_classes=(permissions.AllowAny,), 
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/authapp/', include('authapp.urls')),
     path('api/libraryapp/', include('libraryapp.urls')),
     path('api/parseapp/', include('parseapp.urls')),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

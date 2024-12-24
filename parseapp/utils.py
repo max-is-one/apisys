@@ -40,11 +40,6 @@ def get_set_books(url = 'https://book24.ua/ua/catalog/skidki/'):
             defaults={'genre': genre, 'published_year': year}
         )
         book_instance.authors.set(author_instances)
-        
-
-
-from django.http import HttpResponse
-import io
 
 def books_to_excel(filter_params=None):
     if filter_params is None:
