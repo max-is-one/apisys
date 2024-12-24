@@ -9,14 +9,13 @@ from django.http import HttpResponse
 def get_set_books(url = 'https://book24.ua/ua/catalog/skidki/'):
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
-    base_url = 'https://book24.ua'
 
     for book in soup.find_all('div', class_='item-title'):
         title = book.find('a', class_='dark_link option-font-bold font_sm').find('span').text.strip()
         book_url = book.find('a', class_='dark_link option-font-bold font_sm')['href']
         
-        if not book_url.startswith('http'):
-            book_url = base_url + book_url
+        if not book_url.startswith('http'): 
+            book_url = requests.compat.urljoin(url, book_url)
 
         book_response = requests.get(book_url)
         book_soup = BeautifulSoup(book_response.content, 'html.parser')
