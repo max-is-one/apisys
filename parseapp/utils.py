@@ -33,7 +33,11 @@ def get_set_books(url = 'https://book24.ua/ua/catalog/skidki/'):
         genre, created = Genre.objects.get_or_create(name=genre_name)
 
         year = properties[4].text.strip()
-        year = int(year)
+        try:
+            year = int(year)
+        except (IndexError, ValueError):
+            year = 0
+            
         book_instance, created = Book.objects.update_or_create(
             title=title,
             defaults={'genre': genre, 'published_year': year}
