@@ -3,3 +3,11 @@ __pycache__/
 .env
 *.log
 *.sqlite3
+apisys/__pycache__/
+apisys/migrations/
+authapp/__pycache__/
+authapp/migrations/
+libraryapp/__pycache__/
+libraryapp/migrations/
+parseapp/__pycache__/
+parseapp/migrations/

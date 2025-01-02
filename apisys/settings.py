@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'libraryapp',
     'parseapp',
     'django_filters',
+    'drf_yasg',
 ]
 
 REST_FRAMEWORK = {
@@ -70,7 +71,7 @@ SIMPLE_JWT = {
     }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'
+EMAIL_HOST = 'mailhog'
 EMAIL_PORT = 1025
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = False
@@ -109,13 +110,17 @@ WSGI_APPLICATION = 'apisys.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'library_db',
+        'USER': 'library_user',
+        'PASSWORD': 'librarypassword',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
